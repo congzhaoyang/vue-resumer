@@ -47,7 +47,6 @@ body {
     height: 64px;
     margin-top: 16px;
     #topbar {
-      display: inline-block;
       height: 100%;
       margin-bottom: 8px;
       margin-bottom: 12px;

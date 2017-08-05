@@ -1,6 +1,10 @@
 <template>
     <div id="topbar">
-        topbar
+        <div class="h1">topbar</div>
+        <div class="button">
+            <el-button type="primary"> &nbsp&nbsp保存&nbsp&nbsp</el-button>
+            <el-button type="primary"> &nbsp&nbsp预览&nbsp&nbsp </el-button>
+        </div>
     </div>
 </template>
 
@@ -10,12 +14,22 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 #topbar {
-    width: 100%;
+    width: 1220px;
     background: white;
     line-height: 64px;
     border-radius: 4px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    .h1 {
+        width: 100px;
+    }
+    .button {
+        margin-right: 20px;
+        width: 166px;
+    }
 }
 </style>
 
