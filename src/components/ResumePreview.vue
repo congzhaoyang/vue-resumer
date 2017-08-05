@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss">
     #resumePreview {
-        border: 1px solid orange;
+        border-radius: 4px;
     }
 </style>
 

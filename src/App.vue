@@ -1,16 +1,23 @@
 <template>
-  <div id="app">
-    <p>{{ text }}</p>
-    <Topbar/>
-    <ResumeEditor/>
-    <ResumePreview/>
+  <div class="page">
+    <header>
+      <Topbar/> 
+    </header>
+    <main>
+      <ResumeEditor/>
+      <ResumePreview/>
+    </main>
   </div>
 </template>
 
 <script>
+import './assets/normalize.css'
+import './assets/reset.css'
+
 import Topbar from './components/Topbar'
 import ResumeEditor from './components/ResumeEditor'
 import ResumePreview from './components/ResumePreview'
+
 export default {
   name: 'app',
   data: function () {
@@ -25,15 +32,44 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  p {
-    background: #ddd;
+body {
+  background: #EDEDED;
+}
+
+.page {
+  background: #EDEDED;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 1220px;
+  margin: 0 auto;
+  header {
+    height: 64px;
+    margin-top: 16px;
+    #topbar {
+      display: inline-block;
+      height: 100%;
+      margin-bottom: 8px;
+      margin-bottom: 12px;
+    }
+  }
+  main {
+    flex-grow: 1;
+    width: 1220px;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    #resumeEditor {
+      display: inline-block;
+      width: 36%;
+      background: white;
+      margin: 16px 8px 16px 0;
+    }
+    #resumePreview {
+      width: 64%;
+      background: white;
+      margin: 16px 0 16px 8px;
+    }
   }
 }
 </style>

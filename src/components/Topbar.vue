@@ -1,7 +1,7 @@
 <template>
-  <div id="topbar">
-      topbar
-  </div>
+    <div id="topbar">
+        topbar
+    </div>
 </template>
 
 <script>
@@ -11,9 +11,15 @@ export default {
 </script>
 
 <style lang="scss">
-    #topbar {
-        border: 1px solid purple;
-    }
+#topbar {
+    width: 100%;
+    background: white;
+    line-height: 64px;
+    border-radius: 4px;
+}
 </style>
+
+
+
 
 

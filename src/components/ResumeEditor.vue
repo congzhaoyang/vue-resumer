@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss">
     #resumeEditor {
-        border: 1px solid blue;
+        border-radius: 4px;
     }
 </style>
 
