@@ -49,6 +49,9 @@ export default new Vuex.Store({
     },
     switchTab (state, payload){
         state.selected = payload // 关于 payload 看这里 http://vuex.vuejs.org/zh-cn/mutations.html#提交载荷（payload）
+    },
+    updateResume(state, {field, subfield, value}){
+      state.resume[field][subfield] = value
     }
   }
 })

@@ -32,7 +32,7 @@
                             <!--
                             <input type="text" v-model="resume[item.field][key]">
                             -->
-                            <el-input class="inputer" placeholder="请输入内容" :value="value">
+                            <el-input class="inputer" placeholder="请输入内容" :value="value" @input="changeResumeField(item.field, key, $event.target.value)">
                                 <template class="input-helper" slot="prepend">{{key}}</template>
                             </el-input>
                         </div>
@@ -58,6 +58,13 @@ export default {
         }
     },
     methods: {
+    changeResumeField(field, subfield, value){
+        this.$store.commit('updateResume',{
+          field,
+          subfield,
+          value
+        })
+      }
     }
 }
 </script>
