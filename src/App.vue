@@ -58,6 +58,7 @@ body {
     margin: 0;
     display: flex;
     justify-content: space-around;
+    overflow: auto;
     #resumeEditor {
       display: inline-block;
       width: 36%;
