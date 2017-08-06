@@ -20,7 +20,7 @@
                                     <input type="text" :value="value">
                                     -->
                                     <el-input class="inputer" placeholder="请输入内容" :value="value">
-                                        <template slot="prepend">{{key}}</template>
+                                        <template class="input-helper" slot="prepend">{{key}}</template>
                                     </el-input>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                             <input type="text" v-model="resume[item.field][key]">
                             -->
                             <el-input class="inputer" placeholder="请输入内容" :value="value">
-                                <template slot="prepend">{{key}}</template>
+                                <template class="input-helper" slot="prepend">{{key}}</template>
                             </el-input>
                         </div>
                 </li>   
@@ -44,46 +44,21 @@
 <script>
 export default {
   name: 'ResumeEditor',
-  data () {
-    return {
-        selected: 'profile',
-        resume: {
-            config: [
-                { field: 'profile', icon: 'id' },
-                { field: 'work history', icon: 'work' },
-                { field: 'education', icon: 'book' },
-                { field: 'projects', icon: 'heart' },
-                { field: 'awards', icon: 'cup' },
-                { field: 'contacts', icon: 'phone' },
-            ],
-            profile: {
-                name: 'congzhaoyang',
-                city: 'shanghai',
-                title: 'font-end developer'
+    computed: {
+        selected: {
+            get() {
+                return this.$store.state.selected
             },
-            'work history': [
-                { company: 'AL', content: '我的第二份工作是' },
-                { company: 'TX', content: '我的第一份工作是' },
-            ],
-            education: [
-                { school: 'AL', content: '文字' },
-                { school: 'TX', content: '文字' },
-            ],
-            projects: [
-                { name: 'project A', content: '文字' },
-                { name: 'project B', content: '文字' },
-            ],
-            awards: [
-                { name: 'awards A', content: '文字' },
-                { name: 'awards B', content: '文字' },
-            ],
-            contacts: [
-                { contact: 'phone', content: '13812345678' },
-                { contact: 'qq', content: '12345678' },
-            ],
+            set(value) {
+                return this.$store.commit('switchTab', value)
+            }
+        },
+        resume() {
+            return this.$store.state.resume
         }
+    },
+    methods: {
     }
-  }
 }
 </script>
 
