@@ -74,7 +74,6 @@ svg.icon{
     justify-content: space-around;
     overflow: auto;
     #resumeEditor {
-      display: inline-block;
       width: 36%;
       background: white;
       margin: 16px 8px 16px 0;
