@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import objectPath from "object-path"
 
 Vue.use(Vuex)
 
@@ -50,8 +51,8 @@ export default new Vuex.Store({
     switchTab (state, payload){
         state.selected = payload // 关于 payload 看这里 http://vuex.vuejs.org/zh-cn/mutations.html#提交载荷（payload）
     },
-    updateResume(state, {field, subfield, value}){
-      state.resume[field][subfield] = value
+    updateResume(state, {path, value}){
+      objectPath.set(state.resume, path, value)
     }
   }
 })

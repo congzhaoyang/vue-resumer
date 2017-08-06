@@ -13,13 +13,13 @@
             <ol class="panels">
                 <li v-for="item in resume.config" v-show="item.field === selected">
                         <div v-if="resume[item.field] instanceof Array">
-                            <div class="subitem" v-for="subitem in resume[item.field]">
+                            <div class="subitem" v-for="(subitem, i) in resume[item.field]">
                                 <div class="resumeField" v-for="(value,key) in subitem">
                                     <!-- 
                                     <label> {{key}} </label>
                                     <input type="text" :value="value">
                                     -->
-                                    <el-input class="inputer" placeholder="请输入内容" :value="value">
+                                    <el-input class="inputer" placeholder="请输入内容" type="text" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)">
                                         <template class="input-helper" slot="prepend">{{key}}</template>
                                     </el-input>
                                 </div>
@@ -32,7 +32,7 @@
                             <!--
                             <input type="text" v-model="resume[item.field][key]">
                             -->
-                            <el-input class="inputer" placeholder="请输入内容" :value="value" @input="changeResumeField(item.field, key, $event.target.value)">
+                            <el-input class="inputer" placeholder="请输入内容" type="text" :value="value" @input="changeResumeField(`${item.field}.${key}`, $event.target.value)">
                                 <template class="input-helper" slot="prepend">{{key}}</template>
                             </el-input>
                         </div>
@@ -58,11 +58,10 @@ export default {
         }
     },
     methods: {
-    changeResumeField(field, subfield, value){
+    changeResumeField(path, value){
         this.$store.commit('updateResume',{
-          field,
-          subfield,
-          value
+            path,
+            value
         })
       }
     }
