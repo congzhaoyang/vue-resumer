@@ -1,21 +1,21 @@
 <template>
-  <div id="resumeEditor">
-        <nav>
-            <ol>
-        <li v-for="(item,index) in resume.visibleItems" 
-            :class="{active: item === selected}"
-            @click="selected = item"
-            >
-          {{index}}
-        </li>
+    <div id="resumeEditor">
+            <nav>
+                <ol>
+                    <li v-for="(item, index) in resume.config" :class="{active: item.field === selected}" @click="selected = item.field">
+                        {{ null }}
+                        <svg class="icon">
+                            <use :xlink:href="`#icon-${item.icon}`"></use>
+                        </svg>
+                    </li>
+                </ol>
+            </nav>
+            <ol class="panels">
+                <li v-for="item in resume.config" v-show="item.field === selected">
+                    {{resume[item.field]}}
+                </li>   
             </ol>
-        </nav>
-        <ol class="panels">
-     <li v-for="item in resume.visibleItems" v-show="item === selected">
-        {{resume[item]}}
-      </li>     
-        </ol>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -23,10 +23,17 @@ export default {
   name: 'ResumeEditor',
   data () {
     return {
-        selected: 'bio',
+        selected: 'profile',
         resume: {
-            visibleItems: ['bio', 'work history', 'education', 'projects', 'awards', 'contacts', 'others'],
-            bio: {
+            config: [
+                { field: 'profile', icon: 'id' },
+                { field: 'work history', icon: 'work' },
+                { field: 'education', icon: 'book' },
+                { field: 'projects', icon: 'heart' },
+                { field: 'awards', icon: 'cup' },
+                { field: 'contacts', icon: 'phone' },
+            ],
+            profile: {
                 name: '',
                 city: '',
                 title: ''
@@ -36,7 +43,6 @@ export default {
             projects: [],
             awards: [],
             contacts: [],
-            others: [] 
         }
     }
   }
@@ -55,13 +61,19 @@ export default {
                 height: 100%;
                 display: flex;
                 flex-flow: column nowrap;
-                justify-content: space-around;
+                justify-content: flex-start;
+                background: black;
                 li {
-                    border: 1px solid white;
-                    height: (1/7)*100%;
-                    background: #ddd;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    svg.icon{
+                        width: 24px;
+                        height: 24px;
+                    }
                     &.active {
-                        background: white;
+                        background: #324057;
                     }
                 }
 
