@@ -6,7 +6,7 @@
                 <div v-if="logined" class="userActions">
                     <span>你好，{{user.username}}</span>
                     <a class="button" href="#" @click.prevent="signOut">登出</a>
-                    <el-button type="primary"@click.prevent="signOut"> &nbsp&nbsp登出&nbsp&nbsp</el-button>
+                    <el-button type="primary" @click.prevent="signOut"> &nbsp&nbsp登出&nbsp&nbsp</el-button>
                 </div>
                 <div v-else class="userActions">
                     <a class="button primary" hrefd="#" @click.prevent="signUpDialogVisible = true">注册</a>
