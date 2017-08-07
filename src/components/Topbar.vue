@@ -1,9 +1,10 @@
 <template>
     <div id="topbar">
         <div class="h1">topbar</div>
+        <span>{{ user }}</span>
         <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
         <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-          我就是 slot 内容
+          <SignUpForm @success="login($event)"/>
         </MyDialog>
         <a class="button" href="#">登录</a>
         <div class="button">
@@ -15,6 +16,7 @@
 
 <script>
 import MyDialog from './MyDialog'
+import SignUpForm from './SignUpForm'
 export default {
     name: 'Topbar',
     data(){
@@ -22,8 +24,19 @@ export default {
         signUpDialogVisible: false
         }
     },
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    },
     components: {
-        MyDialog
+        MyDialog, SignUpForm
+    },
+    mothods: {
+        login(user) {
+            this.signUpDialogVisible = false
+            this.$store.commit('setUser', user)
+        }
     }
 }
 </script>
